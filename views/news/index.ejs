@@ -1,0 +1,83 @@
+<html>
+	<head>
+  	<style>
+      .grid {
+  	      display: grid;
+        };
+      .grid-template-columns-1 {
+    	grid-template-columns: 50% 50%;
+    	margin: 3%;
+      };
+      .column {
+      	flex-direction: column;
+      };
+      .container {
+      	max-width: 100%;
+      	margin: 0 auto;
+      };
+    </style>
+    <script>
+      function tarefa (){
+        Object.entries(news[news.length-1]).forEach(([key, value]) => {
+               if (key === "tarefa"){
+                 value = document.getElementById('tarefa').value;
+      }
+        }
+    </script>
+	</head>
+	<body>
+		<div>
+			<h1>
+        <label for="adicionarTarefa">Clique aqui para adicionar uma nova tarefa: </label>
+        <input type="text" id="tarefa">
+        <input type="submit" value="Aperte aqui" onclick="tarefa()"/>
+      </h1>
+		</div>
+		<br>
+		<section class="grid grid-template-columns-1">
+			<div class = "container column">
+        <%for (var i = 0; i<news.length; i++){%>
+           <%if(news[i]!=null){%> 
+             <%Object.entries(news[i]).forEach(([key, value]) => {%>
+               <%if (key === "status" && value === false){%>
+                 <%Object.entries(news[i]).forEach(([key, value]) => {%>
+<%if (key === "tarefa"){%>
+             <details>   
+               <summary>
+             <%=value%>
+               </summary>
+               <button>Concluída</button>
+               <button>Cancelar</button>
+          </details>
+<%}%>
+               <%});%>
+               <%}%>
+<%});%>
+           <%}%>
+       <%}%>
+      </div>
+			<div class = "container column">
+        <%for (var i = 0; i<news.length; i++){%>
+          
+           <%if(news[i]!=null){%> 
+             <%Object.entries(news[i]).forEach(([key, value]) => {%>
+               <%if (key === "status" && value === true){%>
+                 <%Object.entries(news[i]).forEach(([key, value]) => {%>
+<%if (key === "tarefa"){%>
+  <details open="open">  <summary>
+             <s><%=value%></s>
+              </summary>
+          </details>
+<%}%>
+               <%});%>
+               <%}%>
+<%});%>
+           <%}%>
+       <%}%>
+      </div>
+		</section>
+	</body>
+</html>
+
+
+      
